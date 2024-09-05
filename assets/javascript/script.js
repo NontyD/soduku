@@ -51,3 +51,29 @@ function createBoard() {
     });
     initialized = true; // Mark the board as initialized
 }
+// Validate the player's input against the solution
+function checkSolution() {
+    const inputs = board.querySelectorAll('input');
+    let isCorrect = true;
+
+    inputs.forEach(input => {
+        const row = input.dataset.row;
+        const col = input.dataset.col;
+        const value = parseInt(input.value);
+        
+        if (value !== solution[row][col]) {
+            isCorrect = false;
+            input.style.backgroundColor = '#f8d7da';  // Highlight incorrect cells
+        } else {
+            input.style.backgroundColor = '#d4edda';  // Highlight correct cells
+        }
+    });
+
+    if (isCorrect) {
+        message.textContent = 'Congratulations! You solved the puzzle!';
+        message.style.color = 'green';
+    } else {
+        message.textContent = 'Some cells are incorrect. Try again!';
+        message.style.color = 'red';
+    }
+}
