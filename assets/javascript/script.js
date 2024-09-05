@@ -24,3 +24,7 @@ const solution = [
     [2, 8, 7, 4, 1, 9, 6, 3, 5],
     [3, 4, 5, 2, 8, 6, 1, 7, 9]
 ];
+const board = document.getElementById('sudoku-board');
+const message = document.getElementById('message');
+const checkButton = document.getElementById('check-btn');
+const startButton = document.getElementById('start-btn');
