@@ -40,3 +40,40 @@ h1 {
     font-size: 24px;
     margin-bottom: 10px;
 }
+/* Sudoku Board Styles */
+#sudoku-board {
+    display: grid;
+    grid-template-columns: repeat(9, 40px);
+    grid-template-rows: repeat(9, 40px);
+    gap: 2px;
+    margin-bottom: 20px;
+}
+
+#sudoku-board input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border: 1px solid #ddd;
+}
+
+#sudoku-board input.filled {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+#controls {
+    text-align: center;
+}
+
+#controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#message {
+    font-size: 18px;
+    margin-top: 10px;
+}
