@@ -1,18 +1,8 @@
-let initialized = false; // To track if the board is initialized
+// Track if the game is initialized and if a new game should be allowed
+let initialized = false;
+let gameInProgress = false;
 
-// Example Sudoku puzzle and solution for demonstration purposes
-const puzzle = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
-];
-
+// Example Sudoku solution for demonstration purposes (static)
 const solution = [
     [5, 3, 4, 6, 7, 8, 9, 1, 2],
     [6, 7, 2, 1, 9, 5, 3, 4, 8],
@@ -24,15 +14,30 @@ const solution = [
     [2, 8, 7, 4, 1, 9, 6, 3, 5],
     [3, 4, 5, 2, 8, 6, 1, 7, 9]
 ];
+
 const board = document.getElementById('sudoku-board');
 const message = document.getElementById('message');
 const checkButton = document.getElementById('check-btn');
 const startButton = document.getElementById('start-btn');
 
+// Function to create a random Sudoku puzzle by removing random numbers from a complete solution
+function generateRandomPuzzle() {
+    const puzzle = solution.map(row => [...row]); // Copy the solution
+    
+    // Remove random numbers to create the puzzle
+    const emptyCellsCount = 40; // Number of cells to remove to make it challenging
+    for (let i = 0; i < emptyCellsCount; i++) {
+        const row = Math.floor(Math.random() * 9);
+        const col = Math.floor(Math.random() * 9);
+        puzzle[row][col] = 0; // Empty cell
+    }
+
+    return puzzle;
+}
+
 // Create the Sudoku board
-function createBoard() {
-    if (initialized) return; // Prevent reinitializing the board
-    board.innerHTML = '';
+function createBoard(puzzle) {
+    board.innerHTML = ''; // Clear the board before adding new puzzle
     puzzle.forEach((row, rowIndex) => {
         row.forEach((num, colIndex) => {
             const input = document.createElement('input');
@@ -49,8 +54,32 @@ function createBoard() {
             board.appendChild(input);
         });
     });
-    initialized = true; // Mark the board as initialized
+    initialized = true;
+    gameInProgress = true; // Mark game as in progress
 }
+
+// Function to check if the user wants to exit the current game
+function confirmExitGame() {
+    if (gameInProgress) {
+        const confirmExit = confirm("Are you sure you want to exit the current game and start a new one?");
+        if (!confirmExit) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// Start a new game, but ask for confirmation if a game is already in progress
+function startGame() {
+    if (!confirmExitGame()) return;
+
+    gameInProgress = false;
+    initialized = false; // Allow reinitializing the board
+    const newPuzzle = generateRandomPuzzle(); // Generate new random puzzle
+    createBoard(newPuzzle); // Create the new board
+    message.textContent = ''; // Reset message
+}
+
 // Validate the player's input against the solution
 function checkSolution() {
     const inputs = board.querySelectorAll('input');
@@ -60,7 +89,7 @@ function checkSolution() {
         const row = input.dataset.row;
         const col = input.dataset.col;
         const value = parseInt(input.value);
-        
+
         if (value !== solution[row][col]) {
             isCorrect = false;
             input.style.backgroundColor = '#f8d7da';  // Highlight incorrect cells
@@ -77,14 +106,15 @@ function checkSolution() {
         message.style.color = 'red';
     }
 }
-// Start a new game
-function startGame() {
-    initialized = false; // Allow reinitializing the board
-    createBoard();
-    message.textContent = '';
-}
+
 // Event listeners
 checkButton.addEventListener('click', checkSolution);
 startButton.addEventListener('click', startGame);
+
 // Initialize the board when the "Play the Game" section is opened
-document.querySelector('button[onclick="showSection(\'play\')"]').addEventListener('click', createBoard);
+document.querySelector('button[onclick="showSection(\'play\')"]').addEventListener('click', () => {
+    if (!initialized) {
+        const newPuzzle = generateRandomPuzzle(); // Generate a random puzzle initially
+        createBoard(newPuzzle);
+    }
+});
