@@ -118,3 +118,6 @@ document.querySelector('button[onclick="showSection(\'play\')"]').addEventListen
         createBoard(newPuzzle);
     }
 });
+let timerInterval; // To store the interval ID for the timer
+let seconds = 0; // Timer seconds counter
+const timerDisplay = document.getElementById('timer'); // Timer display element
