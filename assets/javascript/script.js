@@ -77,3 +77,9 @@ function checkSolution() {
         message.style.color = 'red';
     }
 }
+// Start a new game
+function startGame() {
+    initialized = false; // Allow reinitializing the board
+    createBoard();
+    message.textContent = '';
+}
