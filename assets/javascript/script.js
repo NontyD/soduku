@@ -83,3 +83,6 @@ function startGame() {
     createBoard();
     message.textContent = '';
 }
+// Event listeners
+checkButton.addEventListener('click', checkSolution);
+startButton.addEventListener('click', startGame);
