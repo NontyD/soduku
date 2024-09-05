@@ -16,6 +16,43 @@
     <button onclick="showSection('how-to-play')">How to Play</button>
     <button onclick="showSection('play')">Play the Game</button>
 </nav>
+<!-- About the Game Section -->
+<div id="about" class="section">
+    <h1>About the Game</h1>
+    <p>Sudoku is a logic-based number puzzle that has captivated enthusiasts worldwide. The name "Sudoku" comes from
+        the Japanese phrase "Suji wa dokushin ni kagiru," meaning "the digits must remain single," but the game
+        isn't originally Japanese.</p>
+
+    <p>Its origins trace back to the 18th-century Swiss mathematician Leonhard Euler, who created "Latin Squares," a
+        game involving non-repeating numbers in rows and columns. In 1979, American puzzle creator Howard Garns
+        developed a modern version called "Number Place."</p>
+
+    <p>Sudoku gained global fame in 1984 when the Japanese publisher Nikoli introduced it, adding small
+        modifications. By the early 2000s, it became a worldwide phenomenon, appearing in newspapers and puzzle
+        books.</p>
+
+    <p> Today, Sudoku remains a beloved puzzle game. The goal is to fill a 9x9 grid so that every row, column, and
+        3x3 section contains the digits 1 to 9 without repetition. The game relies on logic and deduction, offering
+        a timeless challenge for all ages.</p>
+</div>
+
+<!-- How to Play Section -->
+<div id="how-to-play" class="section" style="display: none;">
+    <h1>How to Play</h1>
+    <p>Fill in the empty cells with numbers from 1 to 9. Ensure that every row, column, and 3x3 grid contains each
+        number only once. You can click 'Check Solution' to verify your progress.</p>
+</div>
+
+<!-- Play the Game Section (Sudoku Board) -->
+<div id="play" class="section" style="display: none;">
+    <h1>Sudoku</h1>
+    <div id="sudoku-board"></div>
+    <div id="controls">
+        <button id="start-btn">New Game</button>
+        <button id="check-btn">Check Solution</button>
+        <p id="message"></p>
+    </div>
+</div>
 
 </body>
 
