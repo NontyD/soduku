@@ -86,3 +86,5 @@ function startGame() {
 // Event listeners
 checkButton.addEventListener('click', checkSolution);
 startButton.addEventListener('click', startGame);
+// Initialize the board when the "Play the Game" section is opened
+document.querySelector('button[onclick="showSection(\'play\')"]').addEventListener('click', createBoard);
