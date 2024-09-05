@@ -53,6 +53,17 @@
         <p id="message"></p>
     </div>
 </div>
+<script src="assets/javascript/script.js"></script>
+    <script>
+        // Function to toggle between sections
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none'; // Hide all sections
+            });
+            document.getElementById(sectionId).style.display = 'block'; // Show the selected section
+        }
+    </script>
 
 </body>
 
