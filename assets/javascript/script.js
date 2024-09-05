@@ -28,3 +28,26 @@ const board = document.getElementById('sudoku-board');
 const message = document.getElementById('message');
 const checkButton = document.getElementById('check-btn');
 const startButton = document.getElementById('start-btn');
+
+// Create the Sudoku board
+function createBoard() {
+    if (initialized) return; // Prevent reinitializing the board
+    board.innerHTML = '';
+    puzzle.forEach((row, rowIndex) => {
+        row.forEach((num, colIndex) => {
+            const input = document.createElement('input');
+            input.type = 'text';
+            if (num !== 0) {
+                input.value = num;
+                input.disabled = true;
+                input.classList.add('filled');
+            } else {
+                input.value = '';
+            }
+            input.dataset.row = rowIndex;
+            input.dataset.col = colIndex;
+            board.appendChild(input);
+        });
+    });
+    initialized = true; // Mark the board as initialized
+}
