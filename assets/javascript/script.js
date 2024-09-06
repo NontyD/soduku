@@ -1,8 +1,8 @@
-// Track if the game is initialized and if a new game should be allowed
 let initialized = false;
 let gameInProgress = false;
+let timerInterval;
+let seconds = 0;
 
-// Example Sudoku solution for demonstration purposes (static)
 const solution = [
     [5, 3, 4, 6, 7, 8, 9, 1, 2],
     [6, 7, 2, 1, 9, 5, 3, 4, 8],
@@ -19,25 +19,24 @@ const board = document.getElementById('sudoku-board');
 const message = document.getElementById('message');
 const checkButton = document.getElementById('check-btn');
 const startButton = document.getElementById('start-btn');
+const timerDisplay = document.getElementById('timer');
 
-// Function to create a random Sudoku puzzle by removing random numbers from a complete solution
+// Generate a random puzzle by removing numbers from a complete solution
 function generateRandomPuzzle() {
-    const puzzle = solution.map(row => [...row]); // Copy the solution
-    
-    // Remove random numbers to create the puzzle
-    const emptyCellsCount = 40; // Number of cells to remove to make it challenging
+    const puzzle = solution.map(row => [...row]); 
+    const emptyCellsCount = 40; 
+
     for (let i = 0; i < emptyCellsCount; i++) {
         const row = Math.floor(Math.random() * 9);
         const col = Math.floor(Math.random() * 9);
-        puzzle[row][col] = 0; // Empty cell
+        puzzle[row][col] = 0; 
     }
 
     return puzzle;
 }
 
-// Create the Sudoku board
 function createBoard(puzzle) {
-    board.innerHTML = ''; // Clear the board before adding new puzzle
+    board.innerHTML = ''; 
     puzzle.forEach((row, rowIndex) => {
         row.forEach((num, colIndex) => {
             const input = document.createElement('input');
@@ -55,10 +54,9 @@ function createBoard(puzzle) {
         });
     });
     initialized = true;
-    gameInProgress = true; // Mark game as in progress
+    gameInProgress = true;
 }
 
-// Function to check if the user wants to exit the current game
 function confirmExitGame() {
     if (gameInProgress) {
         const confirmExit = confirm("Are you sure you want to exit the current game and start a new one?");
@@ -69,18 +67,17 @@ function confirmExitGame() {
     return true;
 }
 
-// Start a new game, but ask for confirmation if a game is already in progress
 function startGame() {
-    if (!confirmExitGame()) return;
-
-    gameInProgress = false;
-    initialized = false; // Allow reinitializing the board
-    const newPuzzle = generateRandomPuzzle(); // Generate new random puzzle
-    createBoard(newPuzzle); // Create the new board
-    message.textContent = ''; // Reset message
+    if (confirm("Are you sure you want to start a new game? Your current progress will be lost.")) {
+        initialized = false; 
+        const newPuzzle = generateRandomPuzzle(); 
+        createBoard(newPuzzle);
+        message.textContent = '';
+        stopTimer(); 
+        startTimer(); 
+    }
 }
 
-// Validate the player's input against the solution
 function checkSolution() {
     const inputs = board.querySelectorAll('input');
     let isCorrect = true;
@@ -92,32 +89,48 @@ function checkSolution() {
 
         if (value !== solution[row][col]) {
             isCorrect = false;
-            input.style.backgroundColor = '#f8d7da';  // Highlight incorrect cells
+            input.style.backgroundColor = '#f8d7da'; 
         } else {
-            input.style.backgroundColor = '#d4edda';  // Highlight correct cells
+            input.style.backgroundColor = '#d4edda'; 
         }
     });
 
     if (isCorrect) {
         message.textContent = 'Congratulations! You solved the puzzle!';
         message.style.color = 'green';
+        stopTimer(); 
     } else {
         message.textContent = 'Some cells are incorrect. Try again!';
         message.style.color = 'red';
     }
 }
 
-// Event listeners
+function startTimer() {
+    seconds = 0;
+    timerInterval = setInterval(() => {
+        seconds++;
+        displayTime(); 
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+function displayTime() {
+    const minutes = Math.floor(seconds / 60);
+    const displaySeconds = seconds % 60;
+    timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${displaySeconds.toString().padStart(2, '0')}`;
+}
+
 checkButton.addEventListener('click', checkSolution);
 startButton.addEventListener('click', startGame);
 
-// Initialize the board when the "Play the Game" section is opened
 document.querySelector('button[onclick="showSection(\'play\')"]').addEventListener('click', () => {
     if (!initialized) {
-        const newPuzzle = generateRandomPuzzle(); // Generate a random puzzle initially
+        const newPuzzle = generateRandomPuzzle(); 
         createBoard(newPuzzle);
+        stopTimer(); 
+        startTimer(); 
     }
 });
-let timerInterval; // To store the interval ID for the timer
-let seconds = 0; // Timer seconds counter
-const timerDisplay = document.getElementById('timer'); // Timer display element
