@@ -142,7 +142,41 @@ function resumeGame() {
         message.textContent = '';
     }
 }
+// Function to save the game state
+function saveGame() {
+    if (gameInProgress) {
+        savedState = {
+            board: Array.from(document.querySelectorAll('#sudoku-board input')).map(input => ({
+                value: input.value,
+                disabled: input.disabled,
+                row: input.dataset.row,
+                col: input.dataset.col
+            })),
+            timer: seconds,
+            isPaused: isPaused
+        };
+        message.textContent = 'Game saved!';
+        message.style.color = 'blue';
+    }
+}
 
+// Function to load the saved game state
+function loadGame() {
+    if (savedState) {
+        createBoard(savedState.board.map(cell => ([
+            parseInt(cell.value) || 0
+        ])));
+        seconds = savedState.timer;
+        displayTime();
+        if (savedState.isPaused) {
+            pauseGame();
+        } else {
+            resumeGame();
+        }
+        message.textContent = 'Game loaded!';
+        message.style.color = 'blue';
+    }
+}
 
 checkButton.addEventListener('click', checkSolution);
 startButton.addEventListener('click', startGame);
