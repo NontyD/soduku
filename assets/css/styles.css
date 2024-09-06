@@ -61,7 +61,7 @@ h1 {
     gap: 2px;
     margin-bottom: 20px;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
 }
 
 #sudoku-board input {
@@ -73,8 +73,8 @@ h1 {
 }
 
 #sudoku-board input.filled {
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: rgb(47, 3, 77);
+    color: rgb(248, 245, 245);
 }
 
 #controls {
