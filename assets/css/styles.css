@@ -8,6 +8,17 @@ body {
     margin: 0;
     padding: 0;
 }
+/* Apply borders to all sections */
+.section {
+    width: 90%;            /* Section takes up 90% of the screen width */
+    max-width: 1200px;     /* Maximum width to ensure it doesn't stretch too much on larger screens */
+    border: 2px solid #000; /* Black border, 2px thick */
+    padding: 20px;          /* Add some padding inside the border */
+    margin: 20px 0;         /* Add some margin between sections */
+    border-radius: 10px;    /* Optional: Rounds the corners of the border */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background with transparency */
+}
+
 nav {
     margin: 20px;
     display: flex;
