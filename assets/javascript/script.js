@@ -22,18 +22,19 @@ const message = document.getElementById('message');
 const checkButton = document.getElementById('check-btn');
 const startButton = document.getElementById('start-btn');
 const pauseButton = document.getElementById('pause-btn');
+const resumeButton = document.getElementById('resume-btn');
 const saveButton = document.getElementById('save-btn');
 const timerDisplay = document.getElementById('timer');
 
 // Generate a random puzzle by removing numbers from a complete solution
 function generateRandomPuzzle() {
     const puzzle = solution.map(row => [...row]);
-    const emptyCellsCount = 40; 
+    const emptyCellsCount = 40;
 
     for (let i = 0; i < emptyCellsCount; i++) {
         const row = Math.floor(Math.random() * 9);
         const col = Math.floor(Math.random() * 9);
-        puzzle[row][col] = 0; 
+        puzzle[row][col] = 0;
     }
 
     return puzzle;
@@ -72,7 +73,6 @@ function confirmExitGame() {
 }
 
 function startGame() {
-    alert('Start Game button clicked'); // Alert for debugging
     if (confirm("Are you sure you want to start a new game? Your current progress will be lost.")) {
         initialized = false;
         const newPuzzle = generateRandomPuzzle(); 
@@ -82,8 +82,8 @@ function startGame() {
         startTimer(); 
     }
 }
+
 function startConfetti() {
-    console.log('Confetti is starting!');
     const container = document.getElementById('confetti-container');
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
 
@@ -107,33 +107,37 @@ function startConfetti() {
 
 function checkSolution() {
     const inputs = board.querySelectorAll('input');
-    let isCorrect = true; // Assume the solution is correct initially
+    let isCorrect = true;
 
-    // Loop through all the input cells to check the user's solution
     inputs.forEach(input => {
         const row = input.dataset.row;
         const col = input.dataset.col;
-        const value = parseInt(input.value); // Get the user's input value
+        const value = parseInt(input.value);
 
-        // Compare the user's input with the correct solution
         if (value !== solution[row][col]) {
-            isCorrect = false; // If any input is wrong, set isCorrect to false
-            input.style.backgroundColor = '#f8d7da'; // Highlight incorrect cell in red
+            isCorrect = false;
+            input.style.backgroundColor = '#f8d7da'; 
         } else {
-            input.style.backgroundColor = '#d4edda'; // Highlight correct cell in green
+            input.style.backgroundColor = '#d4edda'; 
         }
     });
 
-    // If the entire solution is correct, show a winning message and trigger confetti
     if (isCorrect) {
         message.textContent = 'Congratulations! You solved the puzzle!';
         message.style.color = 'green';
-        stopTimer(); // Stop the game timer
-        startConfetti(); // Start the confetti effect
+        stopTimer();
+        startConfetti();
     } else {
         message.textContent = 'Some cells are incorrect. Try again!';
         message.style.color = 'red';
     }
+}
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        seconds++;
+        displayTime();
+    }, 1000);
 }
 
 function stopTimer() {
@@ -148,28 +152,29 @@ function displayTime() {
 
 // Function to pause the game
 function pauseGame() {
-    alert('Pause Game button clicked'); // Alert for debugging
     if (gameInProgress && !isPaused) {
         isPaused = true;
         stopTimer();
         message.textContent = 'Game paused. Click "Resume" to continue.';
         message.style.color = 'orange';
+        pauseButton.disabled = true;  // Disable Pause button
+        resumeButton.disabled = false; // Enable Resume button
     }
 }
 
 // Function to resume the game
 function resumeGame() {
-    alert('Resume Game button clicked'); // Alert for debugging
     if (isPaused) {
         isPaused = false;
         startTimer();
         message.textContent = '';
+        pauseButton.disabled = false;  // Enable Pause button
+        resumeButton.disabled = true;  // Disable Resume button
     }
 }
 
 // Function to save the game state
 function saveGame() {
-    alert('Save Game button clicked'); // Alert for debugging
     if (gameInProgress) {
         savedState = {
             board: Array.from(document.querySelectorAll('#sudoku-board input')).map(input => ({
@@ -188,7 +193,6 @@ function saveGame() {
 
 // Function to load the saved game state
 function loadGame() {
-    alert('Load Game button clicked'); // Alert for debugging
     if (savedState) {
         const puzzle = Array(9).fill(null).map(() => Array(9).fill(0));
         savedState.board.forEach(cell => {
@@ -211,6 +215,7 @@ function loadGame() {
 checkButton.addEventListener('click', checkSolution);
 startButton.addEventListener('click', startGame);
 pauseButton.addEventListener('click', pauseGame);
+resumeButton.addEventListener('click', resumeGame);
 saveButton.addEventListener('click', saveGame);
 
 // Ensure "Play the Game" section initializes correctly
