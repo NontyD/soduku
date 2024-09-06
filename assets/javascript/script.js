@@ -1,5 +1,7 @@
 let initialized = false;
 let gameInProgress = false;
+let isPaused = false;
+let savedState = null;
 let timerInterval;
 let seconds = 0;
 
@@ -122,6 +124,25 @@ function displayTime() {
     const displaySeconds = seconds % 60;
     timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${displaySeconds.toString().padStart(2, '0')}`;
 }
+// Function to pause the game
+function pauseGame() {
+    if (gameInProgress) {
+        isPaused = true;
+        stopTimer();
+        message.textContent = 'Game paused. Click "Resume" to continue.';
+        message.style.color = 'orange';
+    }
+}
+
+// Function to resume the game
+function resumeGame() {
+    if (isPaused) {
+        isPaused = false;
+        startTimer();
+        message.textContent = '';
+    }
+}
+
 
 checkButton.addEventListener('click', checkSolution);
 startButton.addEventListener('click', startGame);
