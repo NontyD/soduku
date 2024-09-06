@@ -16,7 +16,9 @@ body {
     padding: 20px;          /* Add some padding inside the border */
     margin: 20px 0;         /* Add some margin between sections */
     border-radius: 10px;    /* Optional: Rounds the corners of the border */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background with transparency */
+    background-color: rgba(28, 3, 97, 0.8); /* Optional: Add a background with transparency */
+    background-image: url('assets/images/background.jpg');
+    color: #ddd;
 }
 
 nav {
@@ -58,6 +60,8 @@ h1 {
     grid-template-rows: repeat(9, 40px);
     gap: 2px;
     margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 #sudoku-board input {
