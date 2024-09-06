@@ -82,7 +82,26 @@ function startGame() {
         startTimer(); 
     }
 }
+function startConfetti() {
+    const container = document.getElementById('confetti-container');
+    const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
 
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.width = `${Math.random() * 10 + 5}px`;
+        confetti.style.height = confetti.style.width;
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
+        container.appendChild(confetti);
+    }
+
+    // Remove confetti after animation completes
+    setTimeout(() => {
+        container.innerHTML = '';
+    }, 5000); // Adjust timeout based on animation duration
+}
 function checkSolution() {
     alert('Check Solution button clicked'); // Alert for debugging
     const inputs = board.querySelectorAll('input');
