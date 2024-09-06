@@ -21,11 +21,13 @@ const board = document.getElementById('sudoku-board');
 const message = document.getElementById('message');
 const checkButton = document.getElementById('check-btn');
 const startButton = document.getElementById('start-btn');
+const pauseButton = document.getElementById('pause-btn');
+const saveButton = document.getElementById('save-btn');
 const timerDisplay = document.getElementById('timer');
 
 // Generate a random puzzle by removing numbers from a complete solution
 function generateRandomPuzzle() {
-    const puzzle = solution.map(row => [...row]); 
+    const puzzle = solution.map(row => [...row]);
     const emptyCellsCount = 40; 
 
     for (let i = 0; i < emptyCellsCount; i++) {
@@ -70,8 +72,9 @@ function confirmExitGame() {
 }
 
 function startGame() {
+    alert('Start Game button clicked'); // Alert for debugging
     if (confirm("Are you sure you want to start a new game? Your current progress will be lost.")) {
-        initialized = false; 
+        initialized = false;
         const newPuzzle = generateRandomPuzzle(); 
         createBoard(newPuzzle);
         message.textContent = '';
@@ -81,6 +84,7 @@ function startGame() {
 }
 
 function checkSolution() {
+    alert('Check Solution button clicked'); // Alert for debugging
     const inputs = board.querySelectorAll('input');
     let isCorrect = true;
 
@@ -124,9 +128,11 @@ function displayTime() {
     const displaySeconds = seconds % 60;
     timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${displaySeconds.toString().padStart(2, '0')}`;
 }
+
 // Function to pause the game
 function pauseGame() {
-    if (gameInProgress) {
+    alert('Pause Game button clicked'); // Alert for debugging
+    if (gameInProgress && !isPaused) {
         isPaused = true;
         stopTimer();
         message.textContent = 'Game paused. Click "Resume" to continue.';
@@ -136,14 +142,17 @@ function pauseGame() {
 
 // Function to resume the game
 function resumeGame() {
+    alert('Resume Game button clicked'); // Alert for debugging
     if (isPaused) {
         isPaused = false;
         startTimer();
         message.textContent = '';
     }
 }
+
 // Function to save the game state
 function saveGame() {
+    alert('Save Game button clicked'); // Alert for debugging
     if (gameInProgress) {
         savedState = {
             board: Array.from(document.querySelectorAll('#sudoku-board input')).map(input => ({
@@ -162,10 +171,13 @@ function saveGame() {
 
 // Function to load the saved game state
 function loadGame() {
+    alert('Load Game button clicked'); // Alert for debugging
     if (savedState) {
-        createBoard(savedState.board.map(cell => ([
-            parseInt(cell.value) || 0
-        ])));
+        const puzzle = Array(9).fill(null).map(() => Array(9).fill(0));
+        savedState.board.forEach(cell => {
+            puzzle[cell.row][cell.col] = parseInt(cell.value) || 0;
+        });
+        createBoard(puzzle);
         seconds = savedState.timer;
         displayTime();
         if (savedState.isPaused) {
@@ -178,11 +190,13 @@ function loadGame() {
     }
 }
 
+// Event listeners for the buttons
 checkButton.addEventListener('click', checkSolution);
 startButton.addEventListener('click', startGame);
-document.getElementById('pause-btn').addEventListener('click', pauseGame);
-document.getElementById('save-btn').addEventListener('click', saveGame);
+pauseButton.addEventListener('click', pauseGame);
+saveButton.addEventListener('click', saveGame);
 
+// Ensure "Play the Game" section initializes correctly
 document.querySelector('button[onclick="showSection(\'play\')"]').addEventListener('click', () => {
     if (!initialized) {
         const newPuzzle = generateRandomPuzzle(); 
