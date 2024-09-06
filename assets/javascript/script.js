@@ -83,59 +83,57 @@ function startGame() {
     }
 }
 function startConfetti() {
+    console.log('Confetti is starting!');
     const container = document.getElementById('confetti-container');
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
 
     for (let i = 0; i < 100; i++) {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
-        confetti.style.width = `${Math.random() * 10 + 5}px`;
-        confetti.style.height = confetti.style.width;
         confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
         confetti.style.left = `${Math.random() * 100}vw`;
+        confetti.style.top = `${Math.random() * 100}vh`;
+        confetti.style.width = `${Math.random() * 10 + 5}px`;
+        confetti.style.height = confetti.style.width;
         confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
+
         container.appendChild(confetti);
     }
 
-    // Remove confetti after animation completes
     setTimeout(() => {
         container.innerHTML = '';
-    }, 5000); // Adjust timeout based on animation duration
+    }, 5000);
 }
-function checkSolution() {
-    alert('Check Solution button clicked'); // Alert for debugging
-    const inputs = board.querySelectorAll('input');
-    let isCorrect = true;
 
+function checkSolution() {
+    const inputs = board.querySelectorAll('input');
+    let isCorrect = true; // Assume the solution is correct initially
+
+    // Loop through all the input cells to check the user's solution
     inputs.forEach(input => {
         const row = input.dataset.row;
         const col = input.dataset.col;
-        const value = parseInt(input.value);
+        const value = parseInt(input.value); // Get the user's input value
 
+        // Compare the user's input with the correct solution
         if (value !== solution[row][col]) {
-            isCorrect = false;
-            input.style.backgroundColor = '#f8d7da'; 
+            isCorrect = false; // If any input is wrong, set isCorrect to false
+            input.style.backgroundColor = '#f8d7da'; // Highlight incorrect cell in red
         } else {
-            input.style.backgroundColor = '#d4edda'; 
+            input.style.backgroundColor = '#d4edda'; // Highlight correct cell in green
         }
     });
 
+    // If the entire solution is correct, show a winning message and trigger confetti
     if (isCorrect) {
         message.textContent = 'Congratulations! You solved the puzzle!';
         message.style.color = 'green';
-        stopTimer(); 
+        stopTimer(); // Stop the game timer
+        startConfetti(); // Start the confetti effect
     } else {
         message.textContent = 'Some cells are incorrect. Try again!';
         message.style.color = 'red';
     }
-}
-
-function startTimer() {
-    seconds = 0;
-    timerInterval = setInterval(() => {
-        seconds++;
-        displayTime(); 
-    }, 1000);
 }
 
 function stopTimer() {
