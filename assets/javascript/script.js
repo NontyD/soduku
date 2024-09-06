@@ -180,6 +180,8 @@ function loadGame() {
 
 checkButton.addEventListener('click', checkSolution);
 startButton.addEventListener('click', startGame);
+document.getElementById('pause-btn').addEventListener('click', pauseGame);
+document.getElementById('save-btn').addEventListener('click', saveGame);
 
 document.querySelector('button[onclick="showSection(\'play\')"]').addEventListener('click', () => {
     if (!initialized) {
