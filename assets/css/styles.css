@@ -92,6 +92,40 @@ h1 {
     font-size: 18px;
     margin-top: 10px;
 }
+/* Confetti container */
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* Confetti pieces */
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    opacity: 0.8;
+    transform: rotate(45deg);
+    pointer-events: none;
+    animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) rotate(45deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
 /* Media Queries */
 
 /* For tablets (screens smaller than 768px) */
