@@ -147,9 +147,13 @@ The font sizes are appropriately chosen for different elements, with larger size
 
 ### Wireframes
 
-Wireframes for desktop were created using balsamiq. The wireframes were the initial idea which has since changed as I got some inspirations.
+Wireframes for desktop were created using balsamiq. 
 
+#### Desktop
+![Desktop](/assets/images/wireframes/desktop.png)
 
+#### Mobile
+![Mobile](/assets/images/wireframes/mobile.png)
 
 ### Features
 #### Home
