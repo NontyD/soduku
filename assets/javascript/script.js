@@ -26,7 +26,10 @@ const resumeButton = document.getElementById('resume-btn');
 const saveButton = document.getElementById('save-btn');
 const timerDisplay = document.getElementById('timer');
 
-// Generate a random puzzle by removing numbers from a complete solution
+/**
+ * Generates a random Sudoku puzzle by removing numbers from the complete solution.
+ * @returns {Array} A 2D array representing the Sudoku puzzle with blank spaces.
+ */
 function generateRandomPuzzle() {
     const puzzle = solution.map(row => [...row]);
     const emptyCellsCount = 40;
@@ -39,7 +42,10 @@ function generateRandomPuzzle() {
 
     return puzzle;
 }
-
+/**
+ * Creates the Sudoku board and populates it with the provided puzzle.
+ * @param {Array} puzzle A 2D array representing the Sudoku puzzle to be displayed.
+ */
 function createBoard(puzzle) {
     board.innerHTML = ''; 
     puzzle.forEach((row, rowIndex) => {
@@ -61,7 +67,10 @@ function createBoard(puzzle) {
     initialized = true;
     gameInProgress = true;
 }
-
+/**
+ * Displays a confirmation prompt to exit the current game and start a new one.
+ * @returns {boolean} Whether the user confirmed to exit the game.
+ */
 function confirmExitGame() {
     if (gameInProgress) {
         const confirmExit = confirm("Are you sure you want to exit the current game and start a new one?");
@@ -71,7 +80,9 @@ function confirmExitGame() {
     }
     return true;
 }
-
+/**
+ * Starts a new game by generating a random puzzle and resetting the timer.
+ */
 function startGame() {
     if (confirm("Are you sure you want to start a new game? Your current progress will be lost.")) {
         initialized = false;
@@ -82,7 +93,9 @@ function startGame() {
         startTimer(); 
     }
 }
-
+/**
+ * Displays a confetti effect on the screen for a winning celebration.
+ */
 function startConfetti() {
     const container = document.getElementById('confetti-container');
     const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
@@ -104,7 +117,10 @@ function startConfetti() {
         container.innerHTML = '';
     }, 5000);
 }
-
+/**
+ * Checks the user's input against the solution and provides feedback (highlighting correct and incorrect cells).
+ * If the solution is correct, triggers a winning celebration.
+ */
 function checkSolution() {
     const inputs = board.querySelectorAll('input');
     let isCorrect = true;
@@ -132,25 +148,33 @@ function checkSolution() {
         message.style.color = 'red';
     }
 }
-
+/**
+ * Starts the game timer and increments the timer every second.
+ */
 function startTimer() {
     timerInterval = setInterval(() => {
         seconds++;
         displayTime();
     }, 1000);
 }
-
+/**
+ * Stops the game timer.
+ */
 function stopTimer() {
     clearInterval(timerInterval);
 }
-
+/**
+ * Displays the current time in minutes and seconds on the timer.
+ */
 function displayTime() {
     const minutes = Math.floor(seconds / 60);
     const displaySeconds = seconds % 60;
     timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${displaySeconds.toString().padStart(2, '0')}`;
 }
 
-// Function to pause the game
+/**
+ * Pauses the game, stops the timer, and updates the UI.
+ */
 function pauseGame() {
     if (gameInProgress && !isPaused) {
         isPaused = true;
@@ -162,7 +186,9 @@ function pauseGame() {
     }
 }
 
-// Function to resume the game
+/**
+ * Resumes the game by restarting the timer and updating the UI.
+ */
 function resumeGame() {
     if (isPaused) {
         isPaused = false;
@@ -173,7 +199,9 @@ function resumeGame() {
     }
 }
 
-// Function to save the game state
+/**
+ * Saves the current state of the game, including the board and timer, so it can be resumed later.
+ */
 function saveGame() {
     if (gameInProgress) {
         savedState = {
@@ -191,7 +219,9 @@ function saveGame() {
     }
 }
 
-// Function to load the saved game state
+/**
+ * Loads a previously saved game state and resumes the game from where it was left off.
+ */
 function loadGame() {
     if (savedState) {
         const puzzle = Array(9).fill(null).map(() => Array(9).fill(0));
@@ -218,7 +248,9 @@ pauseButton.addEventListener('click', pauseGame);
 resumeButton.addEventListener('click', resumeGame);
 saveButton.addEventListener('click', saveGame);
 
-// Ensure "Play the Game" section initializes correctly
+/**
+ * Ensures that the "Play the Game" section initializes correctly when selected.
+ */
 document.querySelector('button[onclick="showSection(\'play\')"]').addEventListener('click', () => {
     if (!initialized) {
         const newPuzzle = generateRandomPuzzle(); 
