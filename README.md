@@ -156,44 +156,31 @@ Wireframes for desktop were created using balsamiq.
 ![Mobile](/assets/images/wireframes/mobile.png)
 
 ### Features
-#### Home
-  
-* Logo and Branding: The homepage prominently features the SA Travels logo, establishing a strong brand identity.
-![Header](/assets/images/readme/header.png)
-* Navigation Bar: An intuitive and responsive navigation bar allows users to easily access different sections of the website, including Destinations, Travel Tips, Calendar, and Contact.
-![Hero](/assets/images/readme/hero-section.png)
-* Hero Section: A visually appealing hero section captures the essence of South Africa's natural beauty with high-quality images and compelling text that invites visitors to explore more.
-  
-     #### Destinations
 
-* Detailed Destination Guides: The Destinations page provides in-depth information about key travel spots across South Africa. Each destination is presented with stunning visuals, descriptions, and insights into what makes it unique.
-![Destinations](/assets/images/readme/destinations-card.png)
-*User-Friendly Layout: The layout is clean and easy to navigate, ensuring that users can quickly find the information they need to plan their travels.
+#### Gameplay
+The Sudoku website offers a straightforward and engaging Sudoku puzzle experience, providing users with key functionalities to enhance the gameplay, track progress, and allow flexibility while playing. The game is designed to be intuitive and user-friendly for both first-time and returning players.
 
-     #### Calendar
+#### Timer
+The game features a built-in timer that starts as soon as a new game is initiated. The timer allows users to track the time it takes to complete each puzzle, adding a layer of challenge for players aiming to improve their solving speed. The elapsed time is displayed prominently above the Sudoku board in a clean and readable format.
 
-* Event Listings: The Calendar page highlights key events, festivals, and activities happening throughout South Africa. It is a valuable resource for travelers who want to experience local culture and festivities during their visit.
-* Monthly View: Users can view events by month, helping them to plan their trips around specific dates or seasons.
-* Event Descriptions: Each event is accompanied by a brief description and a link to a website where the user can get more information about the event.
-![Calendar](/assets/images/readme/calendar-cards.png)
-  
-     #### Travel tips
+#### Pause
+Players can easily pause the game at any time if they need to take a break. Upon pausing, the timer is halted, and a message appears, indicating the game is paused. The game board remains intact, allowing the player to resume their progress without losing any inputs.
 
-* Essential Advice for Travelers: The Travel Tips page offers a wealth of information designed to help travelers make the most of their journey. This includes advice on packing, safety, local customs, and more.
-* Well-Organized Content: Tips are presented in a structured format, making it easy for users to absorb the information and apply it to their travel plans.
-![Travel Tips](/assets/images/readme/tips-cards.png)
-  
-     #### Contact
+#### Resume
+After pausing, users can click the Resume button to continue playing from where they left off. The timer resumes counting from the paused time, ensuring that players can seamlessly pick up their game without restarting.
 
-* Easy Communication: The Contact page provides a simple form that allows visitors to reach out with inquiries, feedback, or requests for more information.
-![Contact](/assets/images/readme/contact-email-format.png)
-* Responsive Design: The form is designed to be user-friendly on all devices, ensuring that users can get in touch with the SA Travels team regardless of how they access the site.
-* Thank You Page: After submitting the form, users are redirected to a "Thank You" page, confirming that their message has been successfully sent.
-![Thank You](/assets/images/readme/thank.png)
-* Footer: The footer has links to social media pages.
-![Footer](/assets/images/readme/footer.png)
+#### Save
+For users who want to continue their game at a later time, there is a Save feature. Players can save their current progress, including their inputs and the elapsed time. When they return to the game, they can load the saved state and continue solving the puzzle from the exact point they left off.
 
-  ### Accessibility
+#### Check Solution
+To provide feedback on progress, the game includes a Check Solution button. Players can click this button at any time to validate their current inputs. Correctly filled cells will be highlighted in green, while incorrect ones will be marked in red, allowing players to adjust their strategy and correct mistakes before completing the puzzle.
+
+#### Winning Celebration
+Once the player successfully completes the puzzle by filling all cells correctly, a winning celebration is triggered. This includes a congratulatory message and a fun confetti animation, providing a rewarding experience and enhancing the sense of accomplishment.
+
+
+
+### Accessibility
 
 The website demonstrates a strong commitment to accessibility, ensuring that all users, including those with disabilities, can navigate and interact with the content effectively. Here’s an overview of the accessibility features integrated into the site:
 
