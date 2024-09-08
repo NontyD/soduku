@@ -4,15 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Logic Game, Soduku, Puzzles">
-    <meta name="keywords" content="Games, Puzzles, Soduku">
-    <title>Soduku Game</title>
-    <!--Favicon-->
+    <meta name="description" content="Logic Game, Sudoku, Puzzles">
+    <meta name="keywords" content="Games, Puzzles, Sudoku">
+    <title>Sudoku Game</title>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/android-chrome-512x512.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon/apple-touch-icon.png">    
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
@@ -24,6 +20,7 @@
     <button onclick="showSection('how-to-play')">How to Play</button>
     <button onclick="showSection('play')">Play the Game</button>
 </nav>
+
 <!-- About the Game Section -->
 <div id="about" class="section">
     <h1>About the Game</h1>
@@ -43,20 +40,17 @@
         3x3 section contains the digits 1 to 9 without repetition. The game relies on logic and deduction, offering
         a timeless challenge for all ages.</p>
 </div>
-
 <!-- How to Play Section -->
 <div id="how-to-play" class="section" style="display: none;">
     <h1>How to Play</h1>
-    <p>Fill in the empty cells with numbers from 1 to 9. Ensure that every row, column, and 3x3 grid contains each
-        number only once. You can click 'Check Solution' to verify your progress.</p>
-        <ul>
-            <li><strong>Start a New Game:</strong> Generates a fresh puzzle, and the <strong>Timer</strong> begins automatically.</li>
-            <li><strong>Fill in the blank cells</strong> with numbers between 1 and 9.</li>
-            <li><strong>Pause:</strong> Stops the game and timer. Use <strong>Resume</strong> to continue playing.</li>
-            <li><strong>Save:</strong> Save your progress and load the game later to continue from where you left off.</li>
-            <li><strong>Check Solution:</strong> Verifies your answers. Incorrect cells are highlighted in red, correct ones in green.</li>
-            <li><strong>Winning Celebration:</strong> Solve the puzzle correctly to trigger a confetti celebration!</li>
-        </ul>
+    <ul>
+        <li><strong>Start a New Game:</strong> Generates a fresh puzzle, and the <strong>Timer</strong> begins automatically.</li>
+        <li><strong>Fill in the blank cells</strong> with numbers between 1 and 9.</li>
+        <li><strong>Pause:</strong> Stops the game and timer. Use <strong>Resume</strong> to continue playing.</li>
+        <li><strong>Save:</strong> Save your progress and load the game later to continue from where you left off.</li>
+        <li><strong>Check Solution:</strong> Verifies your answers. Incorrect cells are highlighted in red, correct ones in green.</li>
+        <li><strong>Winning Celebration:</strong> Solve the puzzle correctly to trigger a confetti celebration!</li>
+    </ul>
 </div>
 
 <!-- Play the Game Section (Sudoku Board) -->
@@ -67,25 +61,26 @@
     <div id="controls">
         <button id="start-btn">New Game</button>
         <button id="pause-btn">Pause</button>
-        <button id="resume-btn" disabled>Resume</button> <!-- Resume Button, disabled initially -->    
+        <button id="resume-btn" disabled>Resume</button>
         <button id="save-btn">Save</button>
+        <button id="load-btn">Load Game</button>
         <button id="check-btn">Check Solution</button>
         <p id="message"></p>
     </div>
 </div>
 <div id="confetti-container"></div>
+
+<!-- Script -->
 <script src="assets/javascript/script.js"></script>
-    <script>
-        // Function to toggle between sections
-        function showSection(sectionId) {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.style.display = 'none'; // Hide all sections
-            });
-            document.getElementById(sectionId).style.display = 'block'; // Show the selected section
-        }
-    </script>
-
+<script>
+    function showSection(sectionId) {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(sectionId).style.display = 'block';
+        
+    }
+</script>
 </body>
-
 </html>
