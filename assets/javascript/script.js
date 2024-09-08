@@ -229,6 +229,9 @@ function checkSolution() {
         message.style.color = 'red';
     }
 }
+/**
+ * Handles confetti celebration for solving the puzzle.
+ */
 function startConfetti() {
     const container = document.getElementById('confetti-container');
     
@@ -258,16 +261,6 @@ function startConfetti() {
     setTimeout(() => {
         container.innerHTML = '';
     }, 5000);
-}
-
-
-/**
- * Handles confetti celebration for solving the puzzle.
- */
-function triggerCelebration() {
-    const confettiContainer = document.getElementById('confetti-container');
-    confettiContainer.innerHTML = '🎉🎉🎉';
-    
 }
 
 // Event Listeners
