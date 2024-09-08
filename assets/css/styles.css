@@ -90,6 +90,14 @@ h1 {
     margin: 5px;
     cursor: pointer;
 }
+.correct {
+    background-color: #d4edda; /* Light green */
+}
+
+.incorrect {
+    background-color: #f8d7da; /* Light red */
+}
+
 
 #message {
     font-size: 18px;

@@ -197,31 +197,69 @@ function resumeGame() {
  * Checks the player's solution.
  */
 function checkSolution() {
-    const inputs = document.querySelectorAll('#sudoku-board input');
     let allCorrect = true;
 
+    const inputs = document.querySelectorAll('#sudoku-board input');
     inputs.forEach(input => {
         const row = input.dataset.row;
         const col = input.dataset.col;
-        if (parseInt(input.value) === solution[row][col]) {
+        const correctValue = solution[row][col];
+        const playerValue = parseInt(input.value);
+
+        // Clear any previous styling
+        input.classList.remove('correct', 'incorrect');
+
+        if (playerValue === correctValue) {
+            // Correct answer
             input.classList.add('correct');
-            input.classList.remove('incorrect');
         } else {
+            // Incorrect answer
             input.classList.add('incorrect');
-            input.classList.remove('correct');
             allCorrect = false;
         }
     });
 
     if (allCorrect) {
-        message.textContent = 'Congratulations! You solved the puzzle!';
+        message.textContent = 'Congratulations, you solved the puzzle!';
         message.style.color = 'green';
-        triggerCelebration();
+        startConfetti();  // Start the confetti animation
+        stopTimer();  // Stop the timer when puzzle is solved
     } else {
-        message.textContent = 'Some numbers are incorrect.';
+        message.textContent = 'Some numbers are incorrect. Please try again.';
         message.style.color = 'red';
     }
+}
+function startConfetti() {
+    const container = document.getElementById('confetti-container');
+    
+    // Clear any previous confetti
+    container.innerHTML = ''; 
+
+    const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+
+    // Create 100 confetti pieces
+    for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+
+        // Set random color, position, and size
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+        confetti.style.top = `${Math.random() * 100}vh`; // Random vertical position
+        confetti.style.width = `${Math.random() * 10 + 5}px`; // Random size
+        confetti.style.height = confetti.style.width; // Square shape
+        confetti.style.animationDuration = `${Math.random() * 2 + 3}s`; // Random animation duration
+
+        // Append confetti to the container
+        container.appendChild(confetti);
     }
+
+    // Remove confetti after 5 seconds
+    setTimeout(() => {
+        container.innerHTML = '';
+    }, 5000);
+}
+
 
 /**
  * Handles confetti celebration for solving the puzzle.
