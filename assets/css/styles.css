@@ -7,7 +7,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('/assets/images/b-ground.jpg');
+    background-image: url('https://raw.githubusercontent.com/NontyD/soduku/main/assets/images/b-ground.jpg');
     background-size: cover;
     /* Ensure the image covers the whole page */
     background-position: center;

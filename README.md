@@ -217,7 +217,9 @@ HTML, CSS and Javascript
 
 * [Google Developer Tools](https://developers.google.com/web/tools) - To troubleshoot and test features, solve issues with responsiveness and styling.
 
-* [TinyPNG](https://tinypng.com/) To compress images
+* [Freepik](https://freepik.com/) For background image
+
+* [TinyPNG](https://tinypng.com/) To compress image
 
 * [Favicon.io](https://favicon.io/) To create favicon.
 
