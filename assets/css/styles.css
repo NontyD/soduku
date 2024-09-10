@@ -1,5 +1,5 @@
 /* Google fonts import */
-@import url('https://fonts.googleapis.com/css?family=Poppins'); 
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* General styles */
 body {
@@ -7,20 +7,30 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #f9f9f9;
+    background-image: url('/assets/images/b-ground.jpg');
+    background-size: cover;
+    /* Ensure the image covers the whole page */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Do not repeat the background image */
     margin: 0;
     padding: 0;
 }
-/* Apply borders to all sections */
+
+/* Apply colorless borders and add background to sections */
 .section {
-    width: 90%;            /* Section takes up 90% of the screen width */
-    max-width: 1200px;     /* Maximum width to ensure it doesn't stretch too much on larger screens */
-    border: 2px solid #000; /* Black border, 2px thick */
-    padding: 20px;          
-    margin: 20px 0;         
-    border-radius: 10px;    
-    background-color: rgba(28, 3, 97, 0.8);     
+    width: 90%;
+    max-width: 1200px;
+    border: 2px solid transparent;
+    /* Transparent border */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
     color: #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Add slight shadow to give a border-like effect */
 }
 
 nav {
@@ -55,6 +65,7 @@ h1 {
     font-size: 24px;
     margin-bottom: 10px;
 }
+
 /* Sudoku Board Styles */
 #sudoku-board {
     display: grid;
@@ -63,7 +74,7 @@ h1 {
     gap: 2px;
     margin-bottom: 20px;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
 }
 
 #sudoku-board input {
@@ -89,19 +100,22 @@ h1 {
     margin: 5px;
     cursor: pointer;
 }
+
 .correct {
-    background-color: #d4edda; /* Light green */
+    background-color: #d4edda;
+    /* Light green */
 }
 
 .incorrect {
-    background-color: #f8d7da; /* Light red */
+    background-color: #f8d7da;
+    /* Light red */
 }
-
 
 #message {
     font-size: 18px;
     margin-top: 10px;
 }
+
 /* Confetti container */
 #confetti-container {
     position: absolute;
@@ -130,6 +144,7 @@ h1 {
     0% {
         transform: translateY(-100vh) rotate(45deg);
     }
+
     100% {
         transform: translateY(100vh) rotate(45deg);
         opacity: 0;
