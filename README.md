@@ -1,7 +1,7 @@
 
 ## Soduku
 
-![Soduku website]()
+![Soduku website](assets/images/tests/about.png)
 
 [Soduku](https://nontyd.github.io/soduku/)
 
