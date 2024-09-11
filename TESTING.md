@@ -67,3 +67,8 @@ W3C was used to validate the HTML on all pages of the website. It was also used 
 ![Soduku](/assets/images/tests/lighthouse.png)
 
 ## BUGS
+
+Throughout development, several bugs were encountered and resolved using browser developer tools. One persistent issue involved the background image rendering correctly during local preview but failing to display on the deployed website. After consulting resources like Google, ChatGPT, and Stack Overflow, I identified the problem as a file path issue. This was resolved by referencing the image URL directly from the GitHub repository, rather than using the workspace path.
+
+Another noteworthy challenge arose as the project expanded. Initially, the game featured just two basic buttons—"Start" and "Check Solution." However, as I implemented additional functionality and introduced new buttons (such as "Pause," "Resume," "Save" and "Timer" functionality), previously functional buttons were intermittently affected and required further adjustments to maintain their intended behavior.
+
