@@ -126,7 +126,22 @@ Sudoku is a world-renowned puzzle that involves filling a 9x9 grid with numbers.
 ## Design
 ## Color scheme
 
+My website utilizes a carefully selected color scheme to create a cohesive and visually pleasing experience. The primary colors used are:
 
+* **Background Color:** The background color is a soft, neutral shade that ensures readability and comfort for the eyes. This choice helps to keep the focus on the Sudoku puzzles and other interactive elements.
+* **Accent Colors:** I use accent colors to highlight important features and guide the user’s attention. These colors are chosen to contrast well with the background, ensuring that buttons, links, and other interactive elements stand out.
+* **Text Color:** The text color is chosen to provide maximum readability against the background. I use a dark shade for the main text to ensure it is easy to read, while lighter shades are used for secondary information.
+
+## Color Psychology
+
+The colors on our website are not just chosen for their aesthetic appeal but also for their psychological impact. For example:
+
+* **Blue:** Often associated with trust and reliability, blue is used to create a sense of calm and focus, which is ideal for a puzzle-solving environment.
+* **Green:** Symbolizing growth and balance, green is used sparingly to highlight success messages and positive feedback.
+
+## Visual Hierarchy
+
+I have implemented a clear visual hierarchy to guide users through the website. The use of contrasting colors helps to differentiate between various sections and elements, making navigation intuitive and user-friendly.
 
 ### Typography
 
@@ -141,9 +156,8 @@ The font sizes are appropriately chosen for different elements, with larger size
    
 ### Imagery
 
-   
-
-
+#### Background Image
+The background image on our website plays a crucial role in setting the overall tone and atmosphere. It provides a visually appealing backdrop that enhances the user experience without distracting from the main content. The chosen image is subtle yet engaging, ensuring that it complements the website’s functionality and aesthetic.   
 
 ### Wireframes
 
