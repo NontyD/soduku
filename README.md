@@ -305,6 +305,7 @@ Please refer to [TESTING.md](TESTING.md) file for all testing carried out.
 * Code Institute Love Maths walkthrough was used as an inspiration for the project.
 * [W3 Schools](https://www.w3schools.com/html/html_css.asp) was used for reference.
 * [Stack Overflow](https://stackoverflow.com/) was also used for reference.
+* [Battle City](https://github.com/Dima-Bulavenko/BattleCity) was used as an inspiration
 
   ### Content
 
@@ -322,3 +323,5 @@ The contect of the website was generation from [ChatGPT](https://chatgpt.com/).
   * My Hackathon teammates
   * Code Institute tutors
   * My friends who helped me with testing.
+  * My Hackathon teammates for inspiration
+  
