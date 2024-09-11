@@ -172,27 +172,43 @@ Wireframes for desktop were created using balsamiq.
 ### Features
 
 #### Gameplay
+
+![Gameplay](/assets/images/features/gameplay.png)
 The Sudoku website offers a straightforward and engaging Sudoku puzzle experience, providing users with key functionalities to enhance the gameplay, track progress, and allow flexibility while playing. The game is designed to be intuitive and user-friendly for both first-time and returning players.
 
 #### Timer
+
+![Timer](/assets/images/features/timer.png)
 The game features a built-in timer that starts as soon as a new game is initiated. The timer allows users to track the time it takes to complete each puzzle, adding a layer of challenge for players aiming to improve their solving speed. The elapsed time is displayed prominently above the Sudoku board in a clean and readable format.
 
 #### Pause
+
+![Pause](/assets/images/features/pause.png)
 Players can easily pause the game at any time if they need to take a break. Upon pausing, the timer is halted, and a message appears, indicating the game is paused. The game board remains intact, allowing the player to resume their progress without losing any inputs.
 
 #### Resume
+
+![Resume](/assets/images/features/resume.png)
 After pausing, users can click the Resume button to continue playing from where they left off. The timer resumes counting from the paused time, ensuring that players can seamlessly pick up their game without restarting.
 
 #### Save
+
+![Save](/assets/images/features/save.png)
 For users who want to continue their game at a later time, there is a Save feature. Players can save their current progress, including their inputs and the elapsed time. When they return to the game, they can load the saved state and continue solving the puzzle from the exact point they left off.
 
 #### Check Solution
+
+![Check Solution](/assets/images/features/check-solution.png)
 To provide feedback on progress, the game includes a Check Solution button. Players can click this button at any time to validate their current inputs. Correctly filled cells will be highlighted in green, while incorrect ones will be marked in red, allowing players to adjust their strategy and correct mistakes before completing the puzzle.
 
 #### Winning Celebration
+
+![Winning Celebration](/assets/images/features/winning-celebration.png)
 Once the player successfully completes the puzzle by filling all cells correctly, a winning celebration is triggered. This includes a congratulatory message and a fun confetti animation, providing a rewarding experience and enhancing the sense of accomplishment.
 
+#### Navigation
 
+![Navigation](/assets/images/features/navigation.png)
 
 ### Accessibility
 
