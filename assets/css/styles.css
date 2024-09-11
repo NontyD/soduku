@@ -1,69 +1,106 @@
-/* Google fonts import */
+/* Google Fonts Import */
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+/* Importing the 'Poppins' font from Google Fonts for the entire website */
 
-/* General styles */
+/* General styles for the entire page */
 body {
     font-family: 'Poppins', sans-serif;
+    /* Applying the 'Poppins' font to the body */
+    
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Centering content both horizontally and vertically */
+    
     background-image: url('https://raw.githubusercontent.com/NontyD/soduku/main/assets/images/b-ground.jpg');
     background-size: cover;
-    /* Ensure the image covers the whole page */
+    /* Ensuring the background image covers the entire screen */
+    
     background-position: center;
-    /* Center the image */
+    /* Centering the background image */
+    
     background-repeat: no-repeat;
-    /* Do not repeat the background image */
+    /* Preventing the background image from repeating */
+    
     margin: 0;
     padding: 0;
+    /* Removing default margin and padding from the body */
 }
 
-/* Apply colorless borders and add background to sections */
+/* Styling sections of content */
 .section {
     width: 90%;
     max-width: 1200px;
+    /* Setting the width of sections to 90% of the screen, but no wider than 1200px */
+    
     border: 2px solid transparent;
-    /* Transparent border */
+    /* Transparent border for layout purposes */
+    
     padding: 20px;
     margin: 20px 0;
+    /* Padding inside the section and margin around it */
+    
     border-radius: 10px;
+    /* Rounding the corners of the section */
+    
     background-color: rgba(0, 0, 0, 0.6);
+    /* Applying a semi-transparent black background for readability */
+    
     color: #ddd;
+    /* Light text color for contrast */
+    
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    /* Add slight shadow to give a border-like effect */
+    /* Adding a subtle shadow around the section for a 3D effect */
 }
 
+/* Navigation styling */
 nav {
     margin: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    /* Centering the navigation buttons and allowing them to wrap on small screens */
 }
 
 nav button {
     padding: 10px 20px;
     margin: 5px;
+    /* Adding space around the buttons */
+    
     font-size: 16px;
     cursor: pointer;
+    /* Styling the buttons with a larger font and pointer cursor */
+    
     border-radius: 5px;
+    /* Slightly rounded corners */
+    
     border: none;
     background-color: #007bff;
+    /* Blue background for the buttons */
+    
     color: white;
+    /* White text color for contrast */
 }
 
 nav button:hover {
     background-color: #0056b3;
+    /* Darker blue background when hovering over buttons */
 }
 
+/* General section styling */
 .section {
     max-width: 600px;
     text-align: center;
+    /* Centering text and limiting the width of sections */
+    
     margin-bottom: 20px;
+    /* Adding space below each section */
 }
 
 h1 {
     font-size: 24px;
     margin-bottom: 10px;
+    /* Larger font size for headings and space below */
 }
 
 /* Sudoku Board Styles */
@@ -71,27 +108,40 @@ h1 {
     display: grid;
     grid-template-columns: repeat(9, 40px);
     grid-template-rows: repeat(9, 40px);
+    /* Creating a 9x9 grid for the Sudoku board */
+    
     gap: 2px;
+    /* Space between grid cells */
+    
     margin-bottom: 20px;
     justify-content: center;
     align-items: center;
+    /* Centering the grid */
 }
 
 #sudoku-board input {
     width: 40px;
     height: 40px;
     text-align: center;
+    /* Ensuring each input box is a square and text is centered */
+    
     font-size: 18px;
+    /* Larger font for easy readability */
+    
     border: 1px solid #ddd;
+    /* Light border around input cells */
 }
 
 #sudoku-board input.filled {
     background-color: rgb(47, 3, 77);
     color: rgb(248, 245, 245);
+    /* Styling for pre-filled numbers: dark background and white text */
 }
 
+/* Control buttons for the game */
 #controls {
     text-align: center;
+    /* Centering control buttons */
 }
 
 #controls button {
@@ -99,24 +149,26 @@ h1 {
     font-size: 16px;
     margin: 5px;
     cursor: pointer;
+    /* General button styling with padding, font size, and cursor */
 }
 
 .correct {
     background-color: #d4edda;
-    /* Light green */
+    /* Light green background for correct answers */
 }
 
 .incorrect {
     background-color: #f8d7da;
-    /* Light red */
+    /* Light red background for incorrect answers */
 }
 
 #message {
     font-size: 18px;
     margin-top: 10px;
+    /* Message styling with larger font and space above */
 }
 
-/* Confetti container */
+/* Confetti container for celebration */
 #confetti-container {
     position: absolute;
     top: 0;
@@ -124,22 +176,31 @@ h1 {
     width: 100%;
     height: 100%;
     pointer-events: none;
+    /* Full-screen overlay that doesn't block user interactions */
+    
     overflow: hidden;
     z-index: 1000;
+    /* Ensures confetti appears above other elements */
 }
 
-/* Confetti pieces */
+/* Styling for individual confetti pieces */
 .confetti {
     position: absolute;
     width: 10px;
     height: 10px;
     background-color: red;
     opacity: 0.8;
+    /* Small square confetti pieces with slight transparency */
+    
     transform: rotate(45deg);
     pointer-events: none;
+    /* Rotating confetti to look like diamonds */
+    
     animation: fall 3s linear forwards;
+    /* Falling animation over 3 seconds */
 }
 
+/* Animation for confetti falling from the top of the screen */
 @keyframes fall {
     0% {
         transform: translateY(-100vh) rotate(45deg);
@@ -148,6 +209,7 @@ h1 {
     100% {
         transform: translateY(100vh) rotate(45deg);
         opacity: 0;
+        /* Confetti falls to the bottom and fades out */
     }
 }
 
@@ -158,30 +220,36 @@ h1 {
     nav button {
         padding: 8px 16px;
         font-size: 14px;
+        /* Smaller padding and font size for buttons on tablets */
     }
 
     h1 {
         font-size: 22px;
+        /* Slightly smaller heading size */
     }
 
     #sudoku-board {
         grid-template-columns: repeat(9, 35px);
         grid-template-rows: repeat(9, 35px);
+        /* Slightly smaller grid cells for tablets */
     }
 
     #sudoku-board input {
         width: 35px;
         height: 35px;
         font-size: 16px;
+        /* Adjusting input size and font for tablets */
     }
 
     #controls button {
         padding: 8px 16px;
         font-size: 14px;
+        /* Smaller control buttons */
     }
 
     #message {
         font-size: 16px;
+        /* Smaller message text */
     }
 }
 
@@ -189,35 +257,42 @@ h1 {
 @media (max-width: 480px) {
     nav {
         flex-direction: column;
+        /* Stack navigation buttons vertically */
     }
 
     nav button {
         padding: 8px 12px;
         font-size: 12px;
         margin: 10px 0;
+        /* Even smaller buttons and added spacing on mobile */
     }
 
     h1 {
         font-size: 20px;
+        /* Smaller heading size */
     }
 
     #sudoku-board {
         grid-template-columns: repeat(9, 30px);
         grid-template-rows: repeat(9, 30px);
+        /* Smaller Sudoku grid for mobile screens */
     }
 
     #sudoku-board input {
         width: 30px;
         height: 30px;
         font-size: 14px;
+        /* Smaller input cells on mobile */
     }
 
     #controls button {
         padding: 6px 12px;
         font-size: 12px;
+        /* Smaller control buttons for mobile */
     }
 
     #message {
         font-size: 14px;
+        /* Smaller message text */
     }
 }
