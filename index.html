@@ -7,90 +7,107 @@
     <meta name="description" content="Logic Game, Sudoku, Puzzles">
     <meta name="keywords" content="Games, Puzzles, Sudoku">
     <title>Sudoku Game</title>
+    <!-- Links to the site's favicons for different platforms and resolutions -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/android-chrome-512x512.png">
+    <!-- Link to the external CSS file to style the page -->
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
-<!-- Navigation Buttons -->
-<nav>
-    <button onclick="showSection('about')">About the Game</button>
-    <button onclick="showSection('how-to-play')">How to Play</button>
-    <button onclick="showSection('play')">Play the Game</button>
-</nav>
-<p>Background image by <a href="https://www.freepik.com/free-photo/bright-colorful-neon-background_58597363.htm">Freepik</a>.</p>
+    <!-- Navigation Buttons -->
+    <nav>
+        <button onclick="showSection('about')">About the Game</button>
+        <button onclick="showSection('how-to-play')">How to Play</button>
+        <button onclick="showSection('play')">Play the Game</button>
+    </nav>
+    <!-- Credit for the background image -->
+    <p>Background image by <a
+            href="https://www.freepik.com/free-photo/bright-colorful-neon-background_58597363.htm">Freepik</a>.</p>
 
-<!-- About the Game Section -->
-<div id="about" class="section">
-    <h1>About the Game</h1>
-    <p>Sudoku is a logic-based number puzzle that has captivated enthusiasts worldwide. The name "Sudoku" comes from
-        the Japanese phrase "Suji wa dokushin ni kagiru," meaning "the digits must remain single," but the game
-        isn't originally Japanese.</p>
+    <!-- About the Game Section -->
+    <div id="about" class="section">
+        <h1>About the Game</h1>
+        <p>Sudoku is a logic-based number puzzle that has captivated enthusiasts worldwide. The name "Sudoku" comes from
+            the Japanese phrase "Suji wa dokushin ni kagiru," meaning "the digits must remain single," but the game
+            isn't originally Japanese.</p>
 
-    <p>Its origins trace back to the 18th-century Swiss mathematician Leonhard Euler, who created "Latin Squares," a
-        game involving non-repeating numbers in rows and columns. In 1979, American puzzle creator Howard Garns
-        developed a modern version called "Number Place."</p>
+        <p>Its origins trace back to the 18th-century Swiss mathematician Leonhard Euler, who created "Latin Squares," a
+            game involving non-repeating numbers in rows and columns. In 1979, American puzzle creator Howard Garns
+            developed a modern version called "Number Place."</p>
 
-    <p>Sudoku gained global fame in 1984 when the Japanese publisher Nikoli introduced it, adding small
-        modifications. By the early 2000s, it became a worldwide phenomenon, appearing in newspapers and puzzle
-        books.</p>
+        <p>Sudoku gained global fame in 1984 when the Japanese publisher Nikoli introduced it, adding small
+            modifications. By the early 2000s, it became a worldwide phenomenon, appearing in newspapers and puzzle
+            books.</p>
 
-    <p> Today, Sudoku remains a beloved puzzle game. The goal is to fill a 9x9 grid so that every row, column, and
-        3x3 section contains the digits 1 to 9 without repetition. The game relies on logic and deduction, offering
-        a timeless challenge for all ages.</p>
-</div>
-<!-- How to Play Section -->
-<div id="how-to-play" class="section" style="display: none;">
-    <h1>Sudoku Rules</h1>
-    <p>Sudoku is a logic-based number puzzle where the goal is to fill a 9x9 grid with digits. The grid is divided into rows, columns, and 3x3 subgrids, and the puzzle provides a few numbers as clues. Your task is to complete the grid by following these rules:</p>
-    
-    
+        <p> Today, Sudoku remains a beloved puzzle game. The goal is to fill a 9x9 grid so that every row, column, and
+            3x3 section contains the digits 1 to 9 without repetition. The game relies on logic and deduction, offering
+            a timeless challenge for all ages.</p>
+    </div>
+    <!-- How to Play Section -->
+    <div id="how-to-play" class="section" style="display: none;">
+        <h1>Sudoku Rules</h1>
+        <p>Sudoku is a logic-based number puzzle where the goal is to fill a 9x9 grid with digits. The grid is divided
+            into rows, columns, and 3x3 subgrids, and the puzzle provides a few numbers as clues. Your task is to
+            complete the grid by following these rules:</p>
+
+
         <p>Objective:</strong> is to fill the grid with numbers from 1 to 9 so that:</p>
-        
-            <p>Each row contains the digits 1 to 9, without repeating any numbers.<br>
+
+        <p>Each row contains the digits 1 to 9, without repeating any numbers.<br>
             Each column contains the digits 1 to 9, without repeating any numbers.<br>
             Each 3x3 subgrid (also called "box") contains the digits 1 to 9, without repeating any numbers.</P>
-        
-    <ul>
-        <li><strong>To play press New Game:</strong> This will generate a fresh puzzle, and the <strong>Timer</strong> begins automatically.</li>
-        <li><strong>Fill in the blank cells</strong> with numbers between 1 and 9.</li>
-        <li><strong>Pause:</strong> Stops the game and timer. Use <strong>Resume</strong> to continue playing.</li>
-        <li><strong>Save:</strong> Save your progress and load the game later to continue from where you left off.</li>
-        <li><strong>Check Solution:</strong> Verifies your answers. Incorrect cells are highlighted in red, correct ones in green.</li>
-        <li><strong>Winning Celebration:</strong> Solve the puzzle correctly to trigger a confetti celebration!</li>
-    </ul>
-</div>
 
-<!-- Play the Game Section (Sudoku Board) -->
-<div id="play" class="section" style="display: none;">
-    <h1>Sudoku</h1>
-    <p id="timer">00:00</p> <!-- Timer display -->
-    <div id="sudoku-board"></div>
-    <div id="controls">
-        <button id="start-btn">New Game</button>
-        <button id="pause-btn">Pause</button>
-        <button id="resume-btn" disabled>Resume</button>
-        <button id="save-btn">Save</button>
-        <button id="load-btn">Load Game</button>
-        <button id="check-btn">Check Solution</button>
-        <p id="message"></p>
+        <ul>
+            <li><strong>To play press New Game:</strong> This will generate a fresh puzzle, and the
+                <strong>Timer</strong> begins automatically.</li>
+            <li><strong>Fill in the blank cells</strong> with numbers between 1 and 9.</li>
+            <li><strong>Pause:</strong> Stops the game and timer. Use <strong>Resume</strong> to continue playing.</li>
+            <li><strong>Save:</strong> Save your progress and load the game later to continue from where you left off.
+            </li>
+            <li><strong>Check Solution:</strong> Verifies your answers. Incorrect cells are highlighted in red, correct
+                ones in green.</li>
+            <li><strong>Winning Celebration:</strong> Solve the puzzle correctly to trigger a confetti celebration!</li>
+        </ul>
     </div>
-</div>
-<div id="confetti-container"></div>
 
-<!-- Script -->
-<script src="assets/javascript/script.js"></script>
-<script>
-    function showSection(sectionId) {
-        const sections = document.querySelectorAll('.section');
-        sections.forEach(section => {
-            section.style.display = 'none';
-        });
-        document.getElementById(sectionId).style.display = 'block';
-        
-    }
-</script>
+    <!-- Play the Game Section (Sudoku Board) -->
+    <!-- This section contains the Sudoku board and the controls for interacting with the game -->
+    <div id="play" class="section" style="display: none;">
+        <h1>Sudoku</h1>
+        <!-- Timer display -->
+        <p id="timer">00:00</p> 
+        <!-- The board where the Sudoku puzzle is displayed -->
+        <div id="sudoku-board"></div>
+        <div id="controls">
+            <!-- Control buttons for gameplay: start, pause, resume, save, load, and check solution -->
+            <button id="start-btn">New Game</button>
+            <button id="pause-btn">Pause</button>
+            <button id="resume-btn" disabled>Resume</button>
+            <button id="save-btn">Save</button>
+            <button id="load-btn">Load Game</button>
+            <button id="check-btn">Check Solution</button>
+            <!-- Message area for game feedback -->
+            <p id="message"></p>
+        </div>
+    </div>
+    <!-- Container for confetti celebration after winning -->
+    <div id="confetti-container"></div>
+
+    <!-- Link to external JavaScript file for the game's functionality -->
+    <script src="assets/javascript/script.js"></script>
+    <!-- Inline script for toggling between different sections -->
+    <script>        
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+
+        }
+    </script>
 </body>
+
 </html>
