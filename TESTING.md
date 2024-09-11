@@ -56,6 +56,11 @@ Am I Responsive was used and these are the results:
 
 ![Soduku](/assets/images/tests/start.png)
 
+### Accessibility
+
+[WAVE](https://wave.webaim.org/report#/https://nontyd.github.io/soduku/)
+
+![Soduku](/assets/images/tests/wave.png)
 
 ### W3C Validator
 W3C was used to validate the HTML on all pages of the website. It was also used to validate the CSS.
